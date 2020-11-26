@@ -128,7 +128,46 @@ print(slice)
 Obs: Like lists all kind of slicing operations is permissible.
 
 B.
-2.	Write a program in Python to do searching either linear or binary. The choice will be provided by the user.
+2.
+#Q. Write a program in Python to do searching either linear or binary. The choice will be provided by the user.
+n=int(input("Enter the no. of elements: "))
+arr=[]
+print("Enter array elements:")
+for i in range(n):
+    arr.append(int(input()))
+search=int(input("Enter search element:"))
+ch=int(input("Enter 1 for linear search and 2 for binary search: "))
+def linear():
+    for i in range(len(arr)):
+        if arr[i] == search:
+            return i
+    return -1
+def binary(arr, start, end, x):
+   if end >= start:
+      mid = start + (end- start)//2
+      if arr[mid] == x:
+        return mid
+      elif arr[mid] > x:
+        return binary(arr, start, mid-1, x)
+      else:
+        return binary(arr, mid+1, end, x)
+   else:
+      return -1
+if ch==1:
+    k=linear()
+else:
+    k=binary(arr,0,len(arr)-1,search)
+if k!=-1:
+    print("Element found at index:",k)
+else:
+    print("Element not found")
 
-
-
+OUTPUT:
+Enter the no. of elements: 3
+Enter array elements:
+1
+4
+6
+Enter search element:6
+Enter 1 for linear search and 2 for binary search: 2
+Element found at index: 2
